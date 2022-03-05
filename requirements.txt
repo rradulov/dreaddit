@@ -31,3 +31,4 @@ mlflow
 sklearn
 statsmodels
 streamlit
+seaborn
