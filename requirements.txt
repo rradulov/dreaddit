@@ -29,3 +29,6 @@ memoized-property
 termcolor
 mlflow
 sklearn
+statsmodels
+xgboost
+shutup
