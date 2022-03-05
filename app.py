@@ -3,14 +3,21 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+st.title('Dreaddit Stress Analysis')
 st.markdown("""# This is a header
 ## This is a sub header
 This is text""")
+st.text('This is an example')
+placeholder = st.empty()
 
-df = pd.DataFrame({
-          'first column': list(range(1, 11)),
-          'second column': np.arange(10, 101, 10)
-        })
+txt = st.text_area('Text to analyze', '''
+     It was the best of times, it was the worst of times, it was
+     the age of wisdom, it was the age of foolishness, it was
+     the epoch of belief, it was the epoch of incredulity, it
+     was the season of Light, it was the season of Darkness, it
+     was the spring of hope, it was the winter of despair, (...)
+     ''')
+st.write('Sentiment:', run_sentiment_analysis(txt))
 
 # this slider allows the user to select a number of lines
 # to display in the dataframe
