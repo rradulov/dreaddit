@@ -3,6 +3,8 @@ import numpy as np
 import mlflow
 from mlflow.tracking import MlflowClient
 from memoized_property import memoized_property
+import joblib
+from termcolor import colored
 
 # import xgboost as xgb
 
@@ -87,10 +89,10 @@ class Trainer(object):
         #add some mflow log info
         # self.mlflow_log_param("model", 'voting hard classifier')
 
-        model_tuple = self.pipeline.get_params()['steps'][1]
+        # model_tuple = self.pipeline.get_params()['steps'][1]
         # self.mlflow_log_param(model_tuple[0], model_tuple[1])
 
-
+        self.save_model()
 
     def evaluate(self):
         """evaluates the pipeline on test data and return the accuracy"""
@@ -99,6 +101,11 @@ class Trainer(object):
         # self.mlflow_log_metric("accuracy", accuracy)
 
         return round(accuracy, 4)
+
+    def save_model(self):
+        """Save the model into a .joblib format"""
+        joblib.dump(self.pipeline, 'model.joblib')
+        print(colored("model.joblib saved locally", "green"))
 
     # MLFlow methods DO NOT TOUCH!!
     @memoized_property
@@ -192,22 +199,22 @@ if __name__ == "__main__":
                   clf7, #clf8, clf9,
                   stack_model, vote_model_hard]
 
-    for estimator in estimators:
+    # for estimator in estimators:
 
-        # # Train and save model, locally and
-        trainer = Trainer(X_train=X_train,
-                        y_train=y_train,
-                        X_test=X_test,
-                        y_test=y_test,
-                        model = estimator)
+    # # Train and save model, locally and
+    trainer = Trainer(X_train=X_train,
+                      y_train=y_train,
+                      X_test=X_test,
+                      y_test=y_test,
+                      model=stack_model)
 
 
-        trainer.run()
+    trainer.run()
 
-        accuracy = trainer.evaluate()
+    accuracy = trainer.evaluate()
 
-        print(
-            f"accuracy: {accuracy}, Model: {trainer.pipeline.get_params()['steps'][1][1]}")
+    print(
+        f"accuracy: {accuracy}, Model: {trainer.pipeline.get_params()['steps'][1][1]}")
 
 
     # trainer.save_model()
