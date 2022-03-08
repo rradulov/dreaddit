@@ -143,7 +143,7 @@ if __name__ == "__main__":
     X_train = training_data.drop("label", axis=1)
 
     y_test = test_data['label']
-    X_test = test_data.drop('label', axis=1)
+    X_test = test_data.drop("label", axis=1)
 
 
     clf1 = SVC(degree=2, gamma='scale', kernel='poly', coef0=5, probability=True)
