@@ -30,5 +30,5 @@ termcolor
 mlflow
 sklearn
 statsmodels
-xgboost
-shutup
+streamlit
+seaborn
