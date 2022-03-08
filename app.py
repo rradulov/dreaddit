@@ -27,23 +27,10 @@ txt = st.text_area('Text to analyze', '''
      was the season of Light, it was the season of Darkness, it
      was the spring of hope, it was the winter of despair, (...)
      ''')
+st.selectbox(label, options, index=0, format_func=special_internal_function, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
 st.write('Stressfactor:', run_sentiment_analysis(txt))
 
-txt2 = st.text_area('Text to analyze', '''
-     It was the best of times, it was the worst of times, it was
-     the age of wisdom, it was the age of foolishness, it was
-     the epoch of belief, it was the epoch of incredulity, it
-     was the season of Light, it was the season of Darkness, it
-     was the spring of hope, it was the winter of despair, (...)
-     ''')
 
-txt3 = st.text_area('Text to analyze', '''
-     It was the best of times, it was the worst of times, it was
-     the age of wisdom, it was the age of foolishness, it was
-     the epoch of belief, it was the epoch of incredulity, it
-     was the season of Light, it was the season of Darkness, it
-     was the spring of hope, it was the winter of despair, (...)
-     ''')
 
 # this slider allows the user to select a number of lines
 # to display in the dataframe
