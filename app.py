@@ -1,7 +1,24 @@
 import streamlit as st
-
 import numpy as np
 import pandas as pd
+
+st.set_page_config(
+    page_title="Quick reference", # => Quick reference - Streamlit
+    page_icon="🐍",
+    layout="centered", # wide
+    initial_sidebar_state="auto") # collapsed
+
+CSS = """
+title {
+    color: red;
+}
+.stApp {
+    background-color: white;
+}
+"""
+
+if st.checkbox('Inject CSS'):
+    st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
 st.title('Dreaddit Stress Analysis')
 st.markdown("""# Stressed? Find it out by Social Media texts!""")
@@ -20,24 +37,28 @@ both neural and traditional, and analyze the complexity and diversity of the
 data and characteristics of each category""")
 placeholder = st.empty()
 
-txt = st.text_area('Text to analyze', '''
-     It was the best of times, it was the worst of times, it was
-     the age of wisdom, it was the age of foolishness, it was
-     the epoch of belief, it was the epoch of incredulity, it
-     was the season of Light, it was the season of Darkness, it
-     was the spring of hope, it was the winter of despair, (...)
-     ''')
-st.selectbox(label, options, index=0, format_func=special_internal_function, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
-st.write('Stressfactor:', run_sentiment_analysis(txt))
+name = st.text_input("Name of Passenger ")
+sex = st.selectbox("Sex",options=['Male' , 'Female'])
+age = st.slider("Age", 1, 100,1)
+p_class = st.selectbox("Passenger Class",options=['First Class' , 'Second Class' , 'Third Class'])
+
+sex = 0 if sex == 'Male' else 1
+f_class , s_class , t_class = 0,0,0
+if p_class == 'First Class':
+	f_class = 1
+elif p_class == 'Second Class':
+	s_class = 1
+else:
+	t_class = 1
+input_data = scaler.transform([[sex , age, f_class , s_class, t_class]])
+prediction = model.predict(input_data)
+predict_probability = model.predict_proba(input_data)
+
+if prediction[0] == 1:
+	st.subheader('Passenger {} would have survived with a probability of {}%'.format(name , round(predict_probability[0][1]*100 , 3)))
+else:
+	st.subheader('Passenger {} would not have survived with a probability of {}%'.format(name, round(predict_probability[0][0]*100 , 3)))
 
 
 
-# this slider allows the user to select a number of lines
-# to display in the dataframe
-# the selected value is returned by st.slider
-line_count = st.slider('Select a line count', 1, 10, 3)
-
-# and used in order to select the displayed lines
-head_df = df.head(line_count)
-
-head_df
+st.write('You selected:', text)
