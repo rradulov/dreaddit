@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import joblib
-import os
 from sklearn.pipeline import Pipeline
 
 
@@ -9,10 +8,10 @@ PATH_TO_LOCAL_MODEL = 'model.joblib'
 
 class Predictor(object):
 
-    def __init__(self, model_path=PATH_TO_LOCAL_MODEL, test_data_path = "raw_data/dreaddit-test.csv"):
+    def __init__(self):
 
-        self.pipeline = self.get_model(model_path)
-        self.load_data(test_data_path)
+        self.pipeline = self.get_model(PATH_TO_LOCAL_MODEL)
+        self.load_data()
         self.predict()
         self.cleaned_output_df = self.output_df[self.output_df.confidence != 0]
 
@@ -20,8 +19,9 @@ class Predictor(object):
         pipeline = joblib.load(path_to_joblib)
         return pipeline
 
-    def load_data(self, test_data_path):
-        test_data = pd.read_csv(test_data_path)
+    def load_data(self):
+        test_data = pd.read_csv("../raw_data/dreaddit-test.csv")
+
         # np.array(df[1].values.tolist())
 
         self.y_true = np.array(test_data['label'].values.tolist())
