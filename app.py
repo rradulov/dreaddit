@@ -98,9 +98,9 @@ st.latex(r'''
      residual = | predict\_proba - y\_true |
      ''')
 
-predict_class.cleaned_output_df.sort_values(by=['confidence','residual'],ascending=False).head(3)[['text','residual']]
+predict_class.cleaned_output_df.sort_values(by=['confidence','residual'],ascending=False).head(3)[['text','y_true','y_pred','residual']]
 
-predict_class.cleaned_output_df.sort_values(by=['residual'],ascending=True).head(3)[['text','residual']]
+predict_class.cleaned_output_df.sort_values(by=['residual'],ascending=True).head(3)[['text','y_true','y_pred','residual']]
 
 
 
