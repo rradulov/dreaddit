@@ -4,6 +4,8 @@ import streamlit as st
 from PIL import Image
 from itertools import cycle
 
+st.set_page_config(page_title="Dreaddit",layout="wide")
+
 # def paginator(label, items, items_per_page=10, on_sidebar=True):
 #     """Lets the user paginate a set of items.
 #     Parameters
@@ -66,7 +68,18 @@ from itertools import cycle
 #     ]
 #     for i, fruit in paginator("Select a fruit page", fruit_list):
 #         st.write('%s. **%s**' % (i, fruit))
+# filteredImages = [image_anx,image_ab,image_fin, image_ptsd, image_social] 
+# caption = ['Anxiety', 'Abuse', 'Financial', 'PTSD', 'Social'] 
+# cols = cycle(st.columns(5)) 
+# for idx, filteredImage in enumerate(filteredImages):
+#     next(cols).image(filteredImage, width=150, caption=caption[idx])
 
+# word_clouds = [image_anx,image_ab,image_fin, image_ptsd, image_social]
+# caption=['Anxiety', 'Abuse', 'Financial', 'PTSD', 'Social']
+
+# image_iterator = paginator("Select page", word_clouds)
+# indices_on_page, images_on_page = map(list, zip(*image_iterator))
+# st.image(images_on_page, width=200, caption=caption) #indices_on_page)
 
 
 st.title('Dreaddit Stress Analysis')
@@ -91,43 +104,66 @@ st.latex(r'''
      residual = | predict\_proba - y\_true |
      ''')
 
-image_anx = Image.open('images/anxiety.png')
-image_ab = Image.open('images/abuse.png')
-image_fin = Image.open('images/financial.png')
-image_ptsd = Image.open('images/ptsd.png')
-image_social = Image.open('images/social.png')
+image_anx_non_stressed = Image.open('images/anxiety_non_stressed.png')
+image_anx_stressed = Image.open('images/anxiety_stressed.png')
 
+image_ab_non_stressed = Image.open('images/abuse_non_stressed.png')
+image_ab_stressed = Image.open('images/abuse_stressed.png')
 
-# filteredImages = [image_anx,image_ab,image_fin, image_ptsd, image_social] 
-# caption = ['Anxiety', 'Abuse', 'Financial', 'PTSD', 'Social'] 
-# cols = cycle(st.columns(5)) 
-# for idx, filteredImage in enumerate(filteredImages):
-#     next(cols).image(filteredImage, width=150, caption=caption[idx])
+image_fin_non_stressed = Image.open('images/financial_non_stressed.png')
+image_fin_stressed = Image.open('images/financial_stressed.png')
 
+image_ptsd_non_stressed = Image.open('images/ptsd_non_stressed.png')
+image_ptsd_stressed = Image.open('images/ptsd_stressed.png')
 
+image_social_non_stressed = Image.open('images/social_non_stressed.png')
+image_social_stressed = Image.open('images/social_stressed.png')
 
-# word_clouds = [image_anx,image_ab,image_fin, image_ptsd, image_social]
-# caption=['Anxiety', 'Abuse', 'Financial', 'PTSD', 'Social']
-
-# image_iterator = paginator("Select page", word_clouds)
-# indices_on_page, images_on_page = map(list, zip(*image_iterator))
-# st.image(images_on_page, width=200, caption=caption) #indices_on_page)
 
 col1, col2, col3 = st.columns([20,1,20])
-
 with col1:
-    st.subheader('Domain : Anxiety')
-    st.image(image_anx)
-
+    st.subheader('Anxiety: Non-Stressed')
+    st.image(image_anx_non_stressed)
 with col3:
-    st.subheader('Domain : Abuse')
-    st.image(image_ab)
+    st.subheader('Anxiety: Stressed')
+    st.image(image_anx_stressed)
+
+col4, col5, col6 = st.columns([20,1,20])
+with col4:
+    st.subheader('Abuse: Non-Stressed')
+    st.image(image_ab_non_stressed)
+with col6:
+    st.subheader('Abuse: Stressed')
+    st.image(image_ab_stressed)
+
+col7, col8, col9 = st.columns([20,1,20])
+with col7:
+    st.subheader('Financial: Non-Stressed')
+    st.image(image_fin_non_stressed)
+with col9:
+    st.subheader('Financial: Stressed')
+    st.image(image_fin_stressed)
+
+col10, col11, col12 = st.columns([20,1,20])
+with col10:
+    st.subheader('PTSD: Non-Stressed')
+    st.image(image_ptsd_non_stressed)
+with col12:
+    st.subheader('PTSD: Stressed')
+    st.image(image_ptsd_stressed)
+
+col13, col14, col15 = st.columns([20,1,20])
+with col13:
+    st.subheader('Social: Non-Stressed')
+    st.image(image_social_non_stressed)
+with col15:
+    st.subheader('Social: Stressed')
+    st.image(image_social_stressed)
 
 
-st.image(image_ab, caption='Domain : Abuse', use_column_width=False)
-st.image(image_fin, caption='Domain : Financial', use_column_width=False)
-st.image(image_ptsd, caption='Domain : PTSD', use_column_width=False)
-st.image(image_social, caption='Domain : Social', use_column_width=False)
+image_vars = Image.open('images/var_boxplots1.png')
+st.image(image_vars, caption='Features distributions', use_column_width=True)
+
 
 
 image_conf_matrix = Image.open('images/conf_matrix.png')
