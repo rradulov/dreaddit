@@ -6,7 +6,6 @@ from itertools import cycle
 
 def app():
     
-    #A streamlit app with two centered texts with different seizes
 
     
     st.markdown("<h1 style='text-align: center; color: black;'>Dreaddit Stress Analysis</h1>", unsafe_allow_html=True)
