@@ -11,6 +11,7 @@ import app3
 import app4
 import app5
 import app6
+import app7
 
 st.set_page_config(page_title="Dreaddit",layout="wide")
 
@@ -20,9 +21,10 @@ PAGES = {
     "Project Overview": app1,
     "Stress Language": app2,
     "Model Features and Perfomance": app3,
-    "True Negatives": app5,
-    "True Positives": app6,
-    "Model Insights": app4
+    "Non-Stressed Reddits": app5,
+    "Stressed Reddits": app6,
+    "Model Insights": app4,
+    "Outro":app7
     
     
     
