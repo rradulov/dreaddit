@@ -21,7 +21,9 @@ def app():
         st.image(image_stress)
     with col3:
         st.write(' ')
-
+        
+    st.markdown("<h6 style='text-align: center; color: grey;'>By : Helene Lipp, Jack Morrissey, Jeff Doran, Radul Radulov</h6>", unsafe_allow_html=True)
+       
 
 
 

@@ -8,7 +8,7 @@ def app():
 
     st.markdown("<h3 style='text-align: center; color: black;'>Word Clouds</h3>", unsafe_allow_html=True)
     
-    st.markdown("<h5 style='text-align: center; color: black;'>We have analyzed word clouds based sub-Reddit domains due to specificity of language used</h5>", unsafe_allow_html=True)
+    st.markdown("<h5 style='text-align: center; color: black;'>We have analyzed word clouds based sub-Reddit domains due to specificity of the language used</h5>", unsafe_allow_html=True)
         
   
 
@@ -28,13 +28,13 @@ def app():
     image_social_stressed = Image.open('images/social_stressed.png')
 
 
-    col1, col2, col3 = st.columns([20,1,20])
-    with col1:
-        st.markdown('**Anxiety: Non-Stressed**')
-        st.image(image_anx_non_stressed)
-    with col3:
-        st.markdown('**Anxiety: Stressed**')
-        st.image(image_anx_stressed)
+    # col1, col2, col3 = st.columns([20,1,20])
+    # with col1:
+    #     st.markdown('**Anxiety: Non-Stressed**')
+    #     st.image(image_anx_non_stressed)
+    # with col3:
+    #     st.markdown('**Anxiety: Stressed**')
+    #     st.image(image_anx_stressed)
 
     # col4, col5, col6 = st.columns([20,1,20])
     # with col4:

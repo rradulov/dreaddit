@@ -9,9 +9,17 @@ from dreaddit.predict import Predictor
 
 def app():
     
+    st.markdown("<h3 style='text-align: center; padding:0px; color: black;'>Model Insights</h3>", unsafe_allow_html=True)
+    
+    st.write("###")
+    
     predict_class = Predictor(model_path='dreaddit/model.joblib', test_data_path = "raw_data/dreaddit-test.csv")
     
-    df = predict_class.cleaned_output_df.sort_values(by=['confidence','residual'],ascending=False).head(3)[['text','y_true','y_pred','residual']]
+    df = predict_class.cleaned_output_df.sort_values(by=['confidence','residual'],ascending=False).head(3)[['text','y_true','y_pred']]
+    df = df.rename(columns={'y_true': 'Actual','y_pred':'Predicted'})
+    df['Actual']= df['Actual'].map({1:'stressed', 0:'non-stressed'})
+    df['Predicted']= df['Predicted'].map({1:'stressed', 0:'non-stressed'})
+    
     
     st.table(df)
 
@@ -20,6 +28,5 @@ def app():
                 - reflective language
                 - telling stories in 3rd person
                 """)
-    st.markdown("""**NLP** is a very complex task for a computer to interprit humman emotions from text, 
-                however we do believe our project is ..... 
+    st.markdown("""**NLP** is a very complex task for a computer to interpret human emotions from text
                  """)
