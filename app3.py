@@ -22,11 +22,15 @@ def app():
     with col1:
         st.image(image_conf_matrix)
     with col2:
+         st.markdown("<h6 style='text-align: justify; color: black;'> Machine Learning techniques with contect specific vectorizer outperform our Deep Learning models. Our best performing stacking classfier ensemble with built-in automated feature selection process has a combination of lexical and social media features extracted from the Reddit posts.</h6>", unsafe_allow_html=True)
+         st.write("######") 
+         st.markdown("<h6 style='text-align: justify ; padding:0px; color: grey;'>The Stacking Classifier is a combination of SVC, Gradient Boosting and Logistic regression </h6>", unsafe_allow_html=True)
+         st.write("######")
          st.markdown("<h6 style='text-align: justify ; padding:0px; color: grey;'>Our best performing model is able to correctly classify stressed people more accurate than non-stressed ones</h6>", unsafe_allow_html=True)
-         st.write("###")
-         st.markdown("<h6 style='text-align: justify ; padding:0px; color: grey;'>Our Best Performing Stacking Classifier is a combination of SVC, Gradient Boosting and Logistic regression </h6>", unsafe_allow_html=True)
-         st.write("###")
+         st.write("######")
          st.markdown("<h6 style='text-align: justify ; padding:0px; color: grey;'>Best accuracy <b>76.5%</b></h6>", unsafe_allow_html=True)
+         
+         
          
         # st.markdown("""The diagonal elements represent the proportion of observations where
         #          the predicted label is equal to the true label, while off-diagonal elements 
