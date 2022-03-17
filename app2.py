@@ -44,7 +44,7 @@ def app():
     #     st.markdown('**Abuse: Stressed**')
     #     st.image(image_ab_stressed)
 
-    col7, col8, col9 = st.columns([20,1,20])
+    col7, col8, col9 = st.columns([40,1,40])
     with col7:
         st.markdown('**Financial: Non-Stressed**')
         st.image(image_fin_non_stressed)

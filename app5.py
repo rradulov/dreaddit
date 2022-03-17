@@ -21,7 +21,7 @@ def app():
     
     predict_class = Predictor(model_path='dreaddit/model.joblib', test_data_path = "raw_data/dreaddit-test.csv")
     
-    st.write(""" ### *Hello everyone!, We hope you've begun defrosting your turkeys in preparation for a delicious meal. As the holiday season begins to ramp up, we've decided to try a new approach to handling the influx of Thanksgiving-related posts we normally receive every year. We're excited to be launching a Thanksgiving MegaThread, a single post for users to share their turkey-day anxieties and support others. Our goal in this trial is two-fold:*""")
+    st.write(""" ### *Hello everyone!, We hope you've begun defrosting your turkeys in preparation for a delicious meal. As the holiday season begins [...] We're excited to be launching a Thanksgiving MegaThread, a single post for users to share their turkey-day anxieties and support others.[...]*""")
     
     st.markdown("""
                 
